@@ -1,10 +1,11 @@
 class Solution:
-	def isHappy(self,n):
-		result = []
-		flag = get_sum(n,result)
-		return flag
+    # @param {integer} n
+    # @return {boolean}
+    def isHappy(self, n):
+        result = []
+        flag = get_sum(n,result)
+        return flag
 		
-
 def get_sum(x,result):
 	ems = []
 	while True:
@@ -29,6 +30,3 @@ def get_sum(x,result):
 	else:
 		result.append(add_sum)
 		return get_sum(add_sum,result)
-		
-test = Solution()
-print test.isHappy(12)
