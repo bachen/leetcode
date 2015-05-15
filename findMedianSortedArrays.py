@@ -24,23 +24,16 @@ class Solution:
 					if nums2 == []:
 						break
 					else:
-						while (count <= limit):
-							nums.append(nums2.pop())
-							count += 1
-						break
+						nums.append(nums2.pop())
 				else:
 					if nums2 == []:
-						while  (count <= limit):
-							nums.append(nums1.pop())
-							count += 1
-						break
+						nums.append(nums1.pop())
 					else:
 						if nums1[-1] >= nums2[-1]:
 							nums.append(nums1.pop())
-							count += 1
 						else:
 							nums.append(nums2.pop())
-							count += 1
+				count += 1
 			if flag == 0:
 				return (nums[limit] + nums[limit - 1])/2.0
 			else:
