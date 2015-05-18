@@ -16,3 +16,4 @@ class Solution:
         for i in range(2,length):
         	for j in range(1,i):
         		if s[i + j - 1] == s[i - j]:
+                    count += 1
