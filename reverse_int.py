@@ -17,9 +17,9 @@ class Solution:
 			signal = tmp.pop()
 			result = int(signal + ''.join(tmp))
 
-		if result > 2**31:
+		if result > (2**31 - 1):
 			return 0
-		elif result <= -(2**31):
+		elif result < -(2**31):
 			return 0
 		else:
 			return result
@@ -28,5 +28,5 @@ test = Solution()
 print test.reverse(123)
 print test.reverse(-123)
 print test.reverse(-2147483648)
-print test.reverse(1563847412)
+print test.reverse(8463847412)
 print test.reverse(1534236469)
