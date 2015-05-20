@@ -9,15 +9,14 @@ class Solution:
     # @return a boolean
 	def hasCycle(self, head):
 		if head == None:
-			return False
+			return None
 		if head.next == None:
-			return False
+			return None
 		tmp = head.next 
 		if tmp.next == None:
-			return False
+			return None
 		fast_p = tmp.next
 		slow_p = head
-		flag = True
 		while True:
 			try:
 				if slow_p != fast_p:
@@ -26,22 +25,25 @@ class Solution:
 					tmp = fast_p.next
 					fast_p = tmp.next
 				elif slow_p == fast_p:
-					flag = True
 					break
 			except:
-				flag = False
-				break
-		return flag
+				return None
+		while slow_p: #将循环的列表删除，留下linked node成为新链表的最后一个node
+			pre = slow_p
+			slow_p = pre.next
+			pre.next = None
+		slow_p = head 
+		while slow_p:
+			pre = slow_p
+			slow_p = slow_p.next
+			if slow_p == None:
+				return pre
 
 s=[]
 for i in range(5):
 	s.append(ListNode(i))
 s[0].next = s[1]
 s[1].next = s[2]
-s[2].next = s[3]
+s[2].next = s[1]
 test = Solution()
 print test.hasCycle(s[0])
-
-#快慢指针：
-#1. 检查单链表中是否存在循环；
-#2. 查找倒数第m个node的值。
