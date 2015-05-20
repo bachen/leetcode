@@ -21,11 +21,16 @@ class Solution:
 			getresult(root,root.left,root.right)
 
 def getresult(root,left,right):
-	if (root != None) & (left != None) & (right != None):
-		new_root = left
-		new_left = new_root.left
-		new_right = new_root.right
-		left.next = right
+	if (root != None) & ((left != None) | (right != None)):
+		if left != None:
+			new_root = left
+			new_left = new_root.left
+			new_right = new_root.right
+			left.next = right
+		elif:
+			new_root = right
+			new_left = new_root.left
+			new_right = new_root.right
 		while root.next:
 			root = root.next
 			right.next = root.left
