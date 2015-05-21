@@ -22,7 +22,12 @@ class Solution:
 			return root
 		middle = length/2
 		root = TreeNode(nums[middle])
-		gettree(nums,0,middle,length-1)
+		gettree(nums,0,length-1)
+		return root
+
+def gettree(nums,start,end):
+	middle = (end - start)/2
+	
 
 	def sortedArrayToBST1(self, nums):
 		if nums == []:
