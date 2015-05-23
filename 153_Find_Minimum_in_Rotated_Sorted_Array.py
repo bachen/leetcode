@@ -41,5 +41,5 @@ def getnum(nums,start,end):
 	return num
 
 test = Solution()
-print test.findMin([2,3,4,5,1])
-print test.findMin([6,1,2,3,4])
+print test.findMin([2,3,4,5,1,1])
+print test.findMin([6,0,0,1,2,2,3,4])
