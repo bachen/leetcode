@@ -8,14 +8,18 @@ class Solution:
 		if length == 1:
 			return 0
 		profit = 0
-		diff = [prices[i+1] - prices[i] for i in range(length-1)]
-		max_profit = diff[0]
-		for i in diff:
-			if i > 0:
-				profit += i
-		return profit
+		max_profit = 0
+		for i in range(1,length):
+			if profit > max_profit:
+				max_profit = profit
+			profit += (prices[i] - prices[i-1])
+			if profit < 0:
+				profit = 0
+		if profit > max_profit:
+			max_profit = profit
+		return max_profit
 
-prices1 = [10,20,30,40,30,25,50,10]
+prices1 = [6,1,3,2,4,7]
 test = Solution()
 
 print test.maxProfit(prices1)
