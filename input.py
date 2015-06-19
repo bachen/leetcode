@@ -30,7 +30,7 @@ def input():
 	pattern0 = re.compile(r'^[+-]?\d+\d$|^[+-]?\d+\.\d+')
 	match = pattern0.match(content[0])
 	if match:
-		result.append(match.group())
+		result.append(float(match.group()))
 	else:
 		result.append(None)
 	
