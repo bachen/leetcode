@@ -24,14 +24,39 @@ def input():
 	content = []
 	[content.append(line.rstrip('\n').strip(' ')) for line in final_f]
 
-	pattern = re.compile(r'^[+-]\d+')
-	match = pattern.match(content[0])
+	result = []
+
+	#+123,123,-123,+1.2,-0.0, except 01. 
+	pattern0 = re.compile(r'^[+-]?\d+\d$|^[+-]?\d+\.\d+')
+	match = pattern0.match(content[0])
 	if match:
-		return match.group()
+		result.append(match.group())
 	else:
-		return False
+		result.append(None)
 	
-	return 'result'
+	#[12,23,34]
+	pattern1 = re.compile(r'^\[(\d+\,)*(\d+)\]$')
+	match = pattern1.match(content[1])
+	if match:
+		tmp = match.group().lstrip('[').rstrip(']').split(',')
+		tmp_list = []
+		[tmp_list.append(int(i)) for i in tmp]
+		result.append(tmp_list)
+	else:
+		result.append(None)
+
+	#[12.3,23,34.0]
+	pattern2 = re.compile(r'^\[(\d+\,|\d+\.\d+\,)*(\d+|\d+\.\d+)\]$')
+	match = pattern2.match(content[2])
+	if match:
+		tmp = match.group().lstrip('[').rstrip(']').split(',')
+		tmp_list = []
+		[tmp_list.append(float(i)) for i in tmp]
+		result.append(tmp_list)
+	else:
+		result.append(None)
+
+	return result
 
 if __name__=='__main__':
 	if input():
