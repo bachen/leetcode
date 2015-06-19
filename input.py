@@ -35,27 +35,42 @@ def input():
 		result.append(None)
 	
 	#[12,23,34]
+	tmp_list = []
 	pattern1 = re.compile(r'^\[(\d+\,)*(\d+)\]$')
 	match = pattern1.match(content[1])
 	if match:
 		tmp = match.group().lstrip('[').rstrip(']').split(',')
-		tmp_list = []
-		[tmp_list.append(int(i)) for i in tmp]
+		tmp_list = [int(i) for i in tmp]
 		result.append(tmp_list)
 	else:
 		result.append(None)
 
 	#[12.3,23,34.0]
+	tmp_list = []
 	pattern2 = re.compile(r'^\[(\d+\,|\d+\.\d+\,)*(\d+|\d+\.\d+)\]$')
 	match = pattern2.match(content[2])
 	if match:
 		tmp = match.group().lstrip('[').rstrip(']').split(',')
-		tmp_list = []
-		[tmp_list.append(float(i)) for i in tmp]
+		tmp_list = [float(i) for i in tmp]
 		result.append(tmp_list)
 	else:
 		result.append(None)
 
+	#[12.3,23,34.0]
+	tmp_list = []
+	pattern3 = re.compile(r'^\[(\((\d+\,)*\d\)\,)*(\((\d+\,)*\d\))\]$')
+	match = pattern3.match(content[3])
+	if match:
+		tmp = match.group().lstrip('[').lstrip('(').rstrip(']').rstrip(')').split('),(')
+		for i in tmp:
+			tmp = i.split(',')
+			ttmp = []
+			for j in tmp:
+				ttmp.append(int(j))
+			tmp_list.append(tuple(ttmp))
+		result.append(tmp_list)
+	else:
+		result.append(None)
 	return result
 
 if __name__=='__main__':
