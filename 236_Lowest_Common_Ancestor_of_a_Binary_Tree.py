@@ -18,7 +18,7 @@ def checktree(node,p,q):
 	#print node.val
 	if node == None:
 		return None
-	if ((node.val < p) & (node.val < q)):
+	if :
 		#print node.val + 'right'
 		return checktree(node.right,p,q)
 	if ((node.val > p) & (node.val > q)):
@@ -26,12 +26,12 @@ def checktree(node,p,q):
 		return checktree(node.left,p,q)
 	return node
 
-s0 = TreeNode(1)
-s1 = TreeNode(2)
-s2 = TreeNode(4)
+s0 = TreeNode(6)
+s1 = TreeNode(5)
+s2 = TreeNode(2)
 s3 = TreeNode(8)
 s4 = TreeNode(3)
-s5 = TreeNode(7)
+s5 = TreeNode(4)
 s6 = TreeNode(9)
 
 s0.right = s1
