@@ -5,7 +5,7 @@ class Solution:
     # @return {boolean}
 	def containsNearbyAlmostDuplicate(self, nums, k, t):
 		length = len(nums)
-		if length >= k:
+		if k >= length:
 			tmp = sorted(nums)
 			for i in range(1,length):
 				if t >= (tmp[i] - tmp[i-1]):
@@ -18,6 +18,8 @@ class Solution:
 				if t >= (tmp[i] - tmp[i-1]):
 					return True
 			while (length >= limit):
-				
 				limit += 1
 			return False 
+
+test = Solution()
+print test.containsNearbyAlmostDuplicate([1,0,1,1],1,1)

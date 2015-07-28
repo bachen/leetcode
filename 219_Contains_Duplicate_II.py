@@ -2,27 +2,20 @@ class Solution:
     # @param {integer[]} nums
     # @param {integer} k
     # @return {boolean}
-	def containsNearbyDuplicate(self, nums, k):
-		length = len(nums)
-		d = {}
-		if k >= length:
-			for i in nums:
-				if d.has_key(i):
-					return True
-				else:
-					d[i] = 1
-			return False
-		else:
-			limit = k
-			while (length >= limit):
-				d = {}
-				for i in range(limit-k,limit):
-					if d.has_key(nums[i]):
-						return True
-					else:
-						d[nums[i]] = 1
-				limit += 1
-			return False
+    def containsNearbyDuplicate(self, nums, k):
+        length = len(nums)
+        d = {}
+        flag = False
+        for i in range(length):
+        	if d.has_key(nums[i]):
+        		distance = i - d[nums[i]]
+        		if k >= distance:
+        			flag = True
+        		else:
+        			d[nums[i]] = i
+        	else:
+        		d[nums[i]] = i
+        return flag
 
 test = Solution()
-print test.containsNearbyDuplicate([1,2],2)
+print test.containsNearbyDuplicate([1,0,1,1],1)
