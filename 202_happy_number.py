@@ -16,13 +16,10 @@ def get_sum(x,result):
 		else:
 			ems.append(x)
 			break
-	
 	add_sum = 0
-
 	for em in ems:
 		add_sum += em*em
 	print add_sum
-
 	if add_sum == 1:
 		return True
 	if add_sum in result:
