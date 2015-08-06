@@ -2,6 +2,8 @@ class Solution:
     # @param {integer[]} nums
     # @return {integer}
     def rob(self, nums):
+        if nums == []:
+            return 0
     	length = len(nums)
     	if 3 >= length:
     		return max(nums)
