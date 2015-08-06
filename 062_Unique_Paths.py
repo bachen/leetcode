@@ -21,7 +21,7 @@ class Solution:
 				else:
 					add_sum = paths[i-1][j] + paths[i][j-1]
 					paths[i].append(add_sum)
-		print paths
+		#print paths
 		return paths[m-1][n-1]
 				
 test = Solution()
