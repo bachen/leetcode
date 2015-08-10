@@ -13,4 +13,4 @@ class Solution:
 		
 
 test = Solution()
-print test.combine(1,2)
+print test.combine(2,2)
