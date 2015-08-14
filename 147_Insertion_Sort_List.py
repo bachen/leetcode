@@ -12,6 +12,13 @@ class Solution:
         	return head
         if (head.next == None):
         	return head
+        if (head.next.next == None):
+            if head.val > head.next.val:
+                new_head = head.next
+                head.next = None
+                new_head.next = head
+                return new_head
+            return head
         h1 = head
         h2 = head.next
         h1.next = None
@@ -48,18 +55,18 @@ class Solution:
             h2 = tmp1
         return new_head
 
-s0 = ListNode(1)
-s1 = ListNode(1)
-#s2 = ListNode(1)
+s0 = ListNode(3)
+s1 = ListNode(2)
+s2 = ListNode(4)
 
 
 s0.next = s1
-#s1.next = s2
+s1.next = s2
 
 
 test = Solution()
 new_head = test.insertionSortList(s0)
 print new_head.val
 print new_head.next.val
-#print new_head.next.next.val
+print new_head.next.next.val
 
