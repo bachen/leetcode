@@ -8,52 +8,43 @@ class Solution:
     # @param {ListNode} head
     # @return {ListNode}
     def insertionSortList(self, head):
-        if (head == None):
-        	return head
-        if (head.next == None):
-        	return head
-        if (head.next.next == None):
-            if head.val > head.next.val:
-                new_head = head.next
-                head.next = None
-                new_head.next = head
-                return new_head
+        if head == None:
             return head
-        h1 = head
-        h2 = head.next
-        h1.next = None
-        new_head = head
-        if h2.val >= h1.val:
-            h1.next = h2
-            new_head = h1
-            h2 = h2.next
-        else:
-            h2.next = h1
-            new_head = h2
-            h2 = h2.next
-        while(h2):
-            #print h2.val
-            tmp1 = h2.next
-            h1 = new_head
-            #print h1.val
-            if h1.val >= h2.val:
-                h2.next = h1
-                new_head = h2
-            else:
-                while(h1):
-                    if (h2.val >= h1.val) & (h1.next == None):
-                        h1.next = h2
-                        break
-                    elif h1.next != None:
-                        if (h2.val >= h1.val) & (h1.next.val >= h2.val):
-                            tmp2 = h1.next
-                            h1.next = h2
-                            h2.next = tmp2
-                            break
-                        else:
-                        	h1 = h1.next
-            h2 = tmp1
-        return new_head
+        if head.next == None:
+            return head
+        helper = ListNode(0)
+        helper.next = head
+        cur2=head.next
+        while(cur2 != None):
+            cur1 = helper
+            while (cur1 != None & cur1.next.val > cur2.val):
+                cur1 = cur1.next
+            tmp = cur2.next
+            cur2.next = cur1.next
+            cur2 = tmp
+        return helper.next
+'''
+public ListNode insertionSortList(ListNode head) {
+    if(head == null)
+        return null;
+    ListNode helper = new ListNode(0);
+    ListNode pre = helper;
+    ListNode cur = head;
+    while(cur!=null)
+    {
+        ListNode next = cur.next;
+        pre = helper;
+        while(pre.next!=null && pre.next.val<=cur.val)
+        {
+            pre = pre.next;
+        }
+        cur.next = pre.next;
+        pre.next = cur;
+        cur = next;
+    }
+    return helper.next;
+}
+'''
 
 s0 = ListNode(3)
 s1 = ListNode(2)
