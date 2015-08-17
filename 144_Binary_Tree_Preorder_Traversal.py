@@ -25,11 +25,20 @@ def getresult(root,result):
 		getresult(root.right,result)
 		return result
 
-s =[]
-for i in range(3,6):
-	s.append(TreeNode(i))
-s[0].right = s[1]
-s[1].left = s[2]
-
+s0 = TreeNode(7)
+s1 = TreeNode(1)
+s2 = TreeNode(4)
+s3 = TreeNode(2)
+s4 = TreeNode(3)
+s5 = TreeNode(6)
+s6 = TreeNode(8)
+s7 = TreeNode(5)
+s0.left =s1
+s0.right = s2
+s1.left = s3
+s1.right = s4
+s4.left = s6
+s2.left = s5
+s5.right = s7
 test = Solution()
-print test.preorderTraversal(s[0])
+print test.preorderTraversal(s0)
