@@ -14,14 +14,19 @@ class Solution:
             return head
         helper = ListNode(0)
         helper.next = head
-        cur2=head.next
-        while(cur2 != None):
-            cur1 = helper
-            while (cur1 != None & cur1.next.val > cur2.val):
-                cur1 = cur1.next
-            tmp = cur2.next
-            cur2.next = cur1.next
-            cur2 = tmp
+        cur=head.next
+        while(cur != None):
+            next = cur.next
+            pre = helper
+            while (pre != None):
+                if pre.next != None & pre.next.val >= cur.val:
+                    pre = pre.next
+                if pre.next == None:
+                    pre = pre.next
+                    break
+            cur.next = pre.next
+            pre.next = cur
+            cur = next
         return helper.next
 '''
 public ListNode insertionSortList(ListNode head) {
