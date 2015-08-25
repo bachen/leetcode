@@ -14,12 +14,12 @@ class Solution:
             return head
         helper = ListNode(0)
         helper.next = head
-        cur=head.next
-        while(cur != None):
+        cur = head.next
+        while (cur != None):
             next = cur.next
             pre = helper
             while (pre != None):
-                if pre.next != None & pre.next.val >= cur.val:
+                if (pre.next != None) & (pre.next.val >= cur.val):
                     pre = pre.next
                 if pre.next == None:
                     pre = pre.next

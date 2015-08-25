@@ -14,4 +14,4 @@ class Solution:
         print nums
 
 test = Solution()
-test.rotate([1,2,3],4)
+test.rotate([1,2,3,5,6,7,8],4)
