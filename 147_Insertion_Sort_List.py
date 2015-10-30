@@ -16,7 +16,7 @@ class Solution:
         helper.next = head
         cur = head
         while cur.next:
-            if cur.next.val < cur.val:
+            if cur.val > cur.next.val:
                 pre = helper
                 while pre.next.val < cur.next.val:
                     pre = pre.next

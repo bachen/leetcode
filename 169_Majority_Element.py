@@ -2,6 +2,20 @@ class Solution:
     # @param {integer[]} nums
     # @return {integer}
 	def majorityElement(self, nums):
+		majority_index = 0
+		count = 1
+		length = len(nums)
+		for i in range(1,length):
+			if nums[majority_index] == nums[i]:
+				count += 1
+			else:
+				count -= 1
+			if count == 0:
+				majority_index = i
+				count = 1
+		return nums[majority_index]
+
+	def majorityElement1(self, nums):
 		d = {}
 		if nums == []:
 			return None
